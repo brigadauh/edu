@@ -28,7 +28,7 @@ Export class MyService {
   const filterOutEvens = filter(x => x % 2)
   const doubleBy = x => map(value => value * x);
   const sum = reduce((acc, next) => acc + next, 0);
-  const source$ = Observable.range(0, 10)
+  const source$ = Observable.range(0, 10) // in rxjs v5.xx use Observable, in v6.xx it's of()
 
   source$
   .pipe(
@@ -36,5 +36,11 @@ Export class MyService {
     doubleBy(2), 
     sum)
   .subscribe(console.log); // 50
-
+  // 'of' is a method introduced in rxjs v6.xx 
+  of(1,2,3).map(x => x + 1).filter(x => x > 2); // chaining different methods
+  // using .pipe()
+  of(1,2,3).pipe(
+    map(x => x + 1),
+    filter(x => x > 2)
+  );
 }
