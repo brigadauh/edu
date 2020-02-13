@@ -1,0 +1,4 @@
+RewriteRule ^/parent-folder/feature/(.*) /feature/$1 [L,PT]
+
+ProxyPass        /feature http://localhost:5050/feature
+ProxyPassReverse /feature http://localhost:5050/feature
