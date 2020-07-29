@@ -1,0 +1,57 @@
+import {Injectable} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
+import {MessageDialogData} from './message-dialog.model';
+
+@Injectable()
+export class ModalDialogService {
+  private subject = new Subject<any>();
+
+  confirm(messageNotification: MessageDialogData, yesFn: () => void, noFn: () => void, yesTitle?: string, noTitle?: string) {
+    if (!yesTitle) {yesTitle = 'OK'; }
+    if (!noTitle) {noTitle = 'Cancel'; }
+    this.setConfirmation(messageNotification, yesFn, noFn, yesTitle, noTitle);
+  }
+
+  alert(messageNotification: MessageDialogData, siFn: () => void) {
+    this.setAlert(messageNotification, siFn);
+  }
+  getMessage(): Observable<any> {
+    return this.subject.asObservable();
+  }
+
+  private setConfirmation(messageNotification: MessageDialogData, yesFn: () => void, noFn: () => void, yesTitle: string, noTitle: string) {
+    const that = this;
+    this.subject.next({
+      type: 'Confirm',
+      messageNotification: messageNotification,
+      yesFn:
+           () => {
+            that.subject.next();
+            yesFn();
+          },
+      noFn:  () => {
+        that.subject.next();
+        noFn();
+      },
+      yesTitle: yesTitle,
+      noTitle: noTitle
+    });
+
+  }
+
+  private setAlert(messageNotification: MessageDialogData, yesFn: () => void) {
+    const that = this;
+    this.subject.next({
+      type: 'Alert',
+      messageNotification: messageNotification,
+      yesFn:
+           () => {
+            that.subject.next();
+            yesFn();
+          }
+    });
+
+  }
+
+
+}
