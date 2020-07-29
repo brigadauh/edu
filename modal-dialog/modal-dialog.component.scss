@@ -1,0 +1,218 @@
+/* Absolute Center Spinner */
+
+.dialog-overlay {
+  position: fixed;
+  z-index: 9999;
+  height: 2em;
+  overflow: visible;
+  margin: 26vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  font-family: "TD Ameritrade Sans"!important;
+
+  &:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  &:not(:required):after {
+    content: '';
+    display: block;
+    font-size: 10px;
+    width: 1em;
+    height: 1em;
+    margin-top: -0.5em;
+    border-radius: 0.5em;
+  }
+
+  .dialog-content {
+    background-color: #fff;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    outline: 0;
+    box-sizing: border-box;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    font-size: 13px;
+    padding: 15px;
+    width: 400px;
+    font-family: "TD Ameritrade Sans"!important;
+
+    &.small {
+      width: 300px;
+    }
+
+    &.medium {
+      width: 400px;
+    }
+
+    &.large {
+      width: 500px;
+    }
+
+    .dialog-header {
+      margin-bottom: 15px;
+
+      .dialog-title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+
+    .dialog-content {
+
+      text-align: center;
+
+    }
+    .dialog-body {
+      .text-info {
+
+      }
+    }
+    .dialog-footer {
+
+      text-align: center;
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+
+    }
+
+    .fade-in {
+      animation: fadeIn ease 10s;
+      -webkit-animation: fadeIn ease 10s;
+      -moz-animation: fadeIn ease 10s;
+      -o-animation: fadeIn ease 10s;
+      -ms-animation: fadeIn ease 10s;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-moz-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-o-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-ms-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  .fltr-btn-round-green {
+    border: 2px solid #188800;
+    color: #087900;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 2px 0px;
+    margin-left: 8px;
+    background-image: none;
+    font-size: 12px;
+    min-width: 60px;
+    height: 24px;
+    width: 60px;
+    &:hover {
+      color: #40A829;
+      border-color: #40A829;
+    }
+    &.fltr-apply {
+      border: none;
+      color: #ffffff;
+      background: linear-gradient(180deg, #40A829 0%, #188801 100%);
+      &:hover {
+        background: linear-gradient(180deg, #50C037 0%, #40A829 100%);
+      }
+    }
+    &.fltr-cancel {
+      border-color: #555;
+      color: #555;
+    }
+  }
+
+  .dialog-body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    p {
+      text-align: center;
+      font-weight: bold;
+      font-size: 15px;
+      padding: 10px 0 15px 0;
+    }
+  }
+
+  #confirm-modal {
+    .dialog-icon {
+      font-size: 64px;
+      color: #daa520;
+      line-height: 48px;
+    }
+    .dialog-content {
+      height:200px;
+    }
+    .dialog-body {
+      height: 128px;
+      svg {
+        display: none;
+      }
+    }
+    button {
+      width: auto;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  #alert-modal {
+    .dialog-body {
+      svg {
+        stroke: #188800;
+        height: 50px;
+      }
+    }
+  }
+}
