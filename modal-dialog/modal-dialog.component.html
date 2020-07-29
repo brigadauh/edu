@@ -1,0 +1,42 @@
+<div class="dialog-overlay" *ngIf="message" id="dialog-overlay" >
+    <div id="confirm-modal" role="dialog" tabindex="-1" aria-modal="true" *ngIf="message?.type == 'Confirm'" >
+        <div class="dialog-content">
+            <div class="dialog-body">
+                <p class="dialog-icon">&#9888;</p>
+                <p class="text-left fa" id="confirm-messageText"
+                   [ngClass]="{'text-success':message.messageNotification.notificationType === 2, 'text-error': message.messageNotification.notificationType === 1 ,'text-info':message.messageNotification.notificationType === 3}">{{message.messageNotification.message}}</p>
+            </div>
+            <div class="dialog-footer">
+                <button type="button" class="fltr-btn-round-green fltr-cancel" (click)="message.noFn()"
+                >{{message.noTitle}}
+                </button>
+                <button type="button" class="fltr-btn-round-green fltr-apply" (click)="message.yesFn()"
+                >{{message.yesTitle}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="alert-modal" role="dialog" tabindex="-1" aria-modal="true" *ngIf="message?.type == 'Alert'" >
+        <div class="dialog-content">
+            <div class="dialog-body">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <circle cx="50" cy="50" r="47" fill="none" stroke-width="8"></circle>
+                    <polyline
+                        fill="none"
+                        points="22,50 39,69 78,30"
+                        stroke-width="14"
+                    ></polyline>
+                </svg>
+                <p class="text-left" id="alert-messageText"
+                   [ngClass]="{'text-success':message.messageNotification.notificationType === 2, 'text-error': message.messageNotification.notificationType === 1 ,'text-info':message.messageNotification.notificationType === 3}">{{message.messageNotification.message}}</p>
+            </div>
+            <div class="dialog-footer">
+                <button type="button" class="fltr-btn-round-green" (click)="message.yesFn()"
+                >OK
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
